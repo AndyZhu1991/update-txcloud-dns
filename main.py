@@ -76,7 +76,7 @@ def update_dns():
     logger.info("Your ip is {}".format(ip))
 
     for record in record_list_result["data"]["records"]:
-        if record["type"] == "A" and record["name"] in ['@', 'www']:
+        if record["type"] == "A" and record["name"] in config['second_domain']:
             params = common_params()
             params.update(record_modify_params(record["id"], record["name"], ip))
             params["Signature"] = sign(params)
